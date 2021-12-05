@@ -6,6 +6,10 @@
 	<groupId>br.com.ryan</groupId>
 	<artifactId>ConDAO</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
+	<properties>
+		<java.version>16</java.version>
+	</properties>
 
 	<dependencies>
 		<dependency>
