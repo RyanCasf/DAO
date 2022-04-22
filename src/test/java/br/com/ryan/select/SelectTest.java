@@ -1,16 +1,20 @@
 package br.com.ryan.select;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.sql.ResultSet;
-import org.junit.Assert;
+
 import org.junit.Test;
 
+import br.com.ryan.connection.ConnectionInterface;
 import br.com.ryan.connection.JDBC;
 
 public class SelectTest {
 	@Test
 	public void testConexaoBancoDados() {
-		ResultSet result = JDBC.execute("SHOW TABLES");
-		System.out.println(result.toString());
-		Assert.assertEquals(true, (result != null));
+		ConnectionInterface DAO = new JDBC();
+		ResultSet result = DAO.execute("SHOW TABLES");
+		
+		assertNotNull(result);
 	}
 }
