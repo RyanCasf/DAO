@@ -3,6 +3,7 @@ package br.com.ryan.connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class JDBC implements ConnectionInterface {
@@ -12,27 +13,40 @@ public class JDBC implements ConnectionInterface {
 	private static final String PASSWD = "";
 	
 	public ResultSet execute(String sql) {
+		Connection connection = null;
+		Statement statement = null;
+		
 		try {
 			Class.forName(DRIVER);
-			Connection connection = DriverManager.getConnection(
-					LOCAL,
-					USER, 
-					PASSWD
-			);
+			connection = DriverManager.getConnection(LOCAL,USER,PASSWD);
 
-			Statement statement = connection.createStatement();
+			statement = connection.createStatement();
 			statement.executeQuery(sql);
-			ResultSet set = statement.getResultSet();
-
-//			connection.close();
-//			set.close();
-			return set;
+			
+			return statement.getResultSet();
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
-			System.err.println("Erro: " + e.getMessage());
+		}
+		finally {
+//			finalizacao(connection, statement);
 		}
 		
 		return null;
+	}
+	
+	public void finalizacao(Connection connection, Statement statement) {
+		try {
+			if (connection != null) {
+				connection.close();
+			}
+			
+			if (statement != null) {
+				statement.close();
+			}
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
