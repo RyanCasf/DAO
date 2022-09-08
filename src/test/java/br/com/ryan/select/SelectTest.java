@@ -13,7 +13,14 @@ public class SelectTest {
 	@Test
 	public void testConexaoBancoDados() {
 		ConnectionInterface DAO = new JDBC();
-		ResultSet result = DAO.execute("SHOW TABLES");
+		
+		ResultSet result = null;
+		try {
+			result = DAO.execute("SHOW TABLES");
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		assertNotNull(result);
 	}
