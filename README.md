@@ -1,5 +1,4 @@
 # DAO
-Connections with bd.
 
 <pre>
 Realizador:
