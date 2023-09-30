@@ -12,7 +12,7 @@ public class JDBC implements ConnectionInterface {
 	private static final String USER = "root";
 	private static final String PASSWD = "";
 	
-	public ResultSet execute(String sql) throws ClassNotFoundException {
+	public ResultSet execute(String sql) {
 		Connection connection = null;
 		Statement statement = null;
 		

@@ -3,5 +3,5 @@ package br.com.ryan.connection;
 import java.sql.ResultSet;
 
 public interface ConnectionInterface {
-	public ResultSet execute(String sql) throws ClassNotFoundException;
+	public ResultSet execute(String sql);
 }
