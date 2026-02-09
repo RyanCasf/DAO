@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Formula;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +21,7 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
+@Audited
 @ToString
 @NoArgsConstructor
 @Table(name = "pes01_pessoa")
@@ -31,6 +34,7 @@ public class Pessoa implements Serializable {
 	@Column(columnDefinition = "TEXT")
 	private String nome;
 	
+	@NotAudited
 	@Formula("CONCAT_WS(' - ', chave, nome)")
 	private String nomeFantasia;
 }

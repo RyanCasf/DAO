@@ -22,4 +22,13 @@ class PessoaDAOTest {
 			Assertions.assertDoesNotThrow(() -> pessoaDAO.pesquisar().forEach(System.out::println));
 		}
 	}
+	
+	@Nested
+	class Historico {
+		
+		@Test
+		void aceito() {
+			Assertions.assertDoesNotThrow(() -> pessoaDAO.historico(2L));
+		}
+	}
 }
